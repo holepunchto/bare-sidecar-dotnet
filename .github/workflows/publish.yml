@@ -51,4 +51,4 @@ jobs:
       - uses: holepunchto/actions/download-prebuilds@v1
       - uses: holepunchto/actions/publish-nuget@v1
         with:
-          user: holepunch
+          user: mafintosh
