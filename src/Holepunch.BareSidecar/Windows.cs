@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO.Pipes;
 using System.Runtime.InteropServices;
 
@@ -67,6 +68,21 @@ internal sealed partial class Windows : Connection
         {
         }
     }
+
+    // Terminates with exit code 1 like the other Bare sidecar hosts, as
+    // Process.Kill() uses -1.
+    public static void Terminate(Process process)
+    {
+        if (process.HasExited || TerminateProcess(process.SafeHandle, 1)) return;
+
+        var error = Marshal.GetLastPInvokeError();
+
+        if (!process.HasExited) throw new Win32Exception(error);
+    }
+
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool TerminateProcess(SafeHandle process, uint exitCode);
 
     [LibraryImport("kernel32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]

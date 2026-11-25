@@ -107,7 +107,7 @@ public sealed class Sidecar : Stream
     /// </summary>
     public void Terminate()
     {
-        if (OperatingSystem.IsWindows()) Process.Kill();
+        if (OperatingSystem.IsWindows()) Windows.Terminate(Process);
         else Unix.Terminate(Process);
     }
 
