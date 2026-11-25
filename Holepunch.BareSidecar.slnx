@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Holepunch.BareSidecar/Holepunch.BareSidecar.csproj" />
+  <Project Path="test/Holepunch.BareSidecar.Tests/Holepunch.BareSidecar.Tests.csproj" />
+</Solution>

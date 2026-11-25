@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" Version="4.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Holepunch.BareSidecar/Holepunch.BareSidecar.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="fixtures/*.js" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../prebuilds/runtimes/$(NETCoreSdkRuntimeIdentifier)/native/*" LinkBase="runtimes/$(NETCoreSdkRuntimeIdentifier)/native" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

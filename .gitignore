@@ -1,0 +1,6 @@
+bin/
+build/
+lib/*.bundle.*
+node_modules
+obj/
+prebuilds/
